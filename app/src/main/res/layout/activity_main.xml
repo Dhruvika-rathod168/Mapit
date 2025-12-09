@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111111">
+
+    <!-- MAIN MAP -->
+    <com.motion.dr_project.ui.PathOverlayView
+        android:id="@+id/pathOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#111111" />
+
+    <!-- TOP BAR -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="top"
+        android:background="@drawable/bg_top_bar"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <TextView
+            android:id="@+id/tvAppTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- FLOATING COMPASS -->
+    <com.motion.dr_project.ui.CompassView
+        android:id="@+id/compassView"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_margin="16dp"
+        android:layout_gravity="top|end"
+        android:background="@drawable/bg_compass_card" />
+
+    <!-- RIGHT SIDE PANEL -->
+    <LinearLayout
+        android:id="@+id/rightPanel"
+        android:layout_width="260dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:orientation="vertical"
+        android:background="@drawable/bg_side_panel"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvPanelTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Visual Tools"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <!-- BODY-MOUNTED MODE -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchBodyMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Body-Mounted Mode"
+            android:textColor="@android:color/white"
+            android:checked="true"
+            android:paddingBottom="8dp" />
+
+        <!-- SHOW / HIDE TOOLS -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchShowSpeedometer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Speedometer"
+            android:textColor="@android:color/white"
+            android:checked="true" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchShowOrientation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Orientation 3D"
+            android:textColor="@android:color/white"
+            android:checked="true" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchShowGraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Accel Graph"
+            android:textColor="@android:color/white"
+            android:checked="true"
+            android:paddingBottom="12dp" />
+
+        <!-- SPEEDOMETER CARD -->
+        <FrameLayout
+            android:id="@+id/cardSpeedometer"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@drawable/bg_panel_card"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp">
+
+            <com.motion.dr_project.ui.SpeedometerView
+                android:id="@+id/speedometerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+
+        <!-- ORIENTATION CUBE -->
+        <FrameLayout
+            android:id="@+id/cardOrientation"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@drawable/bg_panel_card"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp">
+
+            <com.motion.dr_project.ui.Orientation3DView
+                android:id="@+id/orientationView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+
+        <!-- ACCEL GRAPH -->
+        <FrameLayout
+            android:id="@+id/cardAccelGraph"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_panel_card"
+            android:padding="8dp">
+
+            <com.motion.dr_project.ui.AccelGraphView
+                android:id="@+id/accelGraphView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <!-- PANEL TOGGLE BUTTON -->
+    <ImageButton
+        android:id="@+id/btnToggleRightPanel"
+        android:layout_width="32dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginEnd="2dp"
+        android:background="@drawable/btn_icon_bg"
+        android:src="@drawable/chevron_right"
+        android:tint="@android:color/white" />
+
+    <!-- BOTTOM METRICS PANEL -->
+    <LinearLayout
+        android:id="@+id/bottomPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:background="@drawable/bg_bottom_panel"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvMetrics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DR: 0.00 m | Speed: 0.00 m/s | Heading: 0°"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvAxes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="X: 0.00 | Y: 0.00 | Z: 0.00"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="6dp">
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:text="Start" />
+
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnPause"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:text="Pause" />
+
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:text="Reset" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
